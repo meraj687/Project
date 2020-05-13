@@ -1,0 +1,72 @@
+                                                       Iris Flower Projject
+Code-
+//                                                Read the data                                      //
+//   you have to download the csv file and then saved it                   //
+import pandas as pd
+from google.colab import files
+for fn in uploaded.keys():
+  print('User uploaded file "(name)" with length (length) bytes'.format(
+      name=fn, length=len(uploaded[fn]
+  )))
+uploaded
+import io
+sample_df= pd.read_csv(io.StringIO(uploaded['Book1.csv'].decode('utf-8')))
+sample_df.head()
+sample_df
+from google.colab import data_table
+data_table.DataTable(sample_df, include_index=False, num_rows_per_page=10)
+%load_ext google.colab.data_table
+from vega_datasets import data
+sample_df
+
+OR
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+%matplotlib inline
+
+from sklearn.datasets import load_iris
+dataset = load_iris()
+dataset
+print(dataset.DESCR)
+x = dataset.data    
+y= dataset.target   
+y      // threee category of data
+x        //4 column represent sepal and pedal according to their length                             
+            and width 
+plt.plot(x[:,0],x[:,1],'r.') //Scatter plot
+plt.plot(x[:,0][y==0],x[:,1][y==0],'r.') //first category of data as y==0
+plt.plot(x[:,0][y==0],x[:,1][y==0],'r.',label='Setosa')  // label name
+plt.legend()
+plt.show()
+ 
+// combine all we get//
+plt.plot(x[:,0][y==0],x[:,1][y==0],'r.',label='Setosa')
+plt.plot(x[:,0][y==1],x[:,1][y==1],'g.',label='Versicolour')
+plt.plot(x[:,0][y==2],x[:,1][y==2],'b.',label='Virginica')
+plt.legend()
+plt.show()
+ 
+//Signify each one is different from the 2 others//  plt.plot(x[:,0][y==0]*x[:,1][y==0],x[:,1][y==0]*x[:,2][y==0],'r.',label='Setosa')
+plt.plot(x[:,0][y==1]*x[:,1][y==1],x[:,1][y==1]*x[:,2][y==1],'g.',label='Versicolour')
+plt.plot(x[:,0][y==2]*x[:,1][y==2],x[:,1][y==2]*x[:,2][y==2],'b.',label='Virginica')
+plt.legend()
+plt.show()
+ 
+from sklearn.preprocessing import StandardScaler
+x= StandardScaler().fit_transform(x)
+from sklearn.model_selection import train_test_split
+x_train, x_test ,y_train, y_test=train_test_split(x,y) 
+from sklearn.linear_model import LogisticRegression
+log_reg = LogisticRegression()
+log_reg.fit(x_train, y_train)
+log_reg.score(x_test,y_test)
+log_reg.score(x,y)
+ 
+ 
+ 
+ 
+ 
+ 
+
