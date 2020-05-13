@@ -1,0 +1,44 @@
+# Project
+#Code have been executed using r programming
+#R Document for Codes on the Project 
+
+data<-read.csv("covid_19_data.csv")
+ View(data)
+ data<-read.csv("COVID19_line_list_data.csv")
+ View(data)
+ x.df<-data.frame(data)
+ View(x.df)
+ x.sub<-subset(x.df,data$age>10)
+ View(x.sub)
+ x.sub<-subset(x.df,data$age>50 & data$age<80)
+ View(x.sub)
+ x.sub<-subset(x.df,data$gender=="Female")
+ View(x.sub)
+ install.packages("ggplot2")
+library(ggplot2)
+qplot(x=data$age,y=data$death)
+qplot(x=data$case_in_country,y=data$recovered)
+
+ggplot(data,aes(x=data$case ,y=data$recovered,color=data$case))+geom_line()+geom_point()
+
+ggplot(data,aes(x=data$case ,y=data$recovered,shape=data$recovered,color=data$case))+geom_line()+geom_point()
+
+ plot(data$recovered,data$case,pch=1)
+ plot(data$recovered,data$case,pch=2)
+ plot(data$recovered,data$case,pch=3)
+ plot(data$recovered,data$case,pch=15)
+ plot(data$recovered,data$case,pch=16)
+
+ plot(data$recovered,data$case,main="COVID19")
+barplot(data$case,col="#c00000",main="#c00000")
+
+p1 <- qplot(data$case, data$recovered, colour = "cyl")
+p2 <- qplot(data$case) + ggtitle("title")
+p3 <- qplot(data$case, geom = "dotplot")
+install.packages(“gridExtra”)
+library(gridExtra)
+grid.arrange(p1,p2,p3, nrow = 1)
+grid.arrange(p1,p2, nrow = 1)
+
+
+
